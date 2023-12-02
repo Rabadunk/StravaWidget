@@ -39,6 +39,8 @@ let getActivites = async (res) => {
 
 let getRefreshToken = async () => {
 
+    console.log( process.env.STRAVA_CLIENT_ID, process.env.STRAVA_CLIENT_SECRET, process.env.STRAVA_REFRESH_TOKEN);
+
     const { data: response } = await axios.post(auth_link, {
             headers: {
                 'Accept': 'application/json, text/plain, */*',
