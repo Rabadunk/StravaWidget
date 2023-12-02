@@ -4,7 +4,7 @@ require('dotenv').config();
 const auth_link = "https://www.strava.com/oauth/token";
 
 async function buildChart(activities) {
-    const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;}"});
+    const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;} .title{font: sans-serif;}"});
 
     let total_runs_count = activities.all_run_totals.count;
     let total_distance =  parseInt(activities.all_run_totals.distance/1000);
@@ -39,8 +39,6 @@ let getActivites = async (res) => {
 
 let getRefreshToken = async () => {
 
-    console.log( process.env.STRAVA_CLIENT_ID, process.env.STRAVA_CLIENT_SECRET, process.env.STRAVA_REFRESH_TOKEN);
-
     const { data: response } = await axios.post(auth_link, {
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -53,6 +51,15 @@ let getRefreshToken = async () => {
 
     return response;
 }
+
+let main = async () => {
+    let refreshToken = await getRefreshToken();
+    let activities = await getActivites(refreshToken);
+    let chart = await buildChart(activities);
+    console.log(chart);
+}
+
+main();
 
 module.exports = async (req, res) => {
     res.setHeader('Content-Type', 'image/svg+xml');
