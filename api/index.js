@@ -12,14 +12,14 @@ let buildChart = async (activities) => {
     let minutes = parseInt((activities.all_run_totals.moving_time/3600 - hours)*60);
 
 
-    let svgChart = d3n.createSVG(500, 170);
-    svgChart.append('text').text('STRAVA').attr('class', 'main').attr('x', 10).attr('y', 60).attr("font-family", "Tahoma");
-    svgChart.append('text').text('Runs').attr('class', 'title').attr('x', 10).attr('y', 100).attr("font-family", "Arial, Helvetica, sans-serif");
-    svgChart.append('text').text(`${total_runs_count}`).attr('class', 'count').attr('x', 10).attr('y', 150);
-    svgChart.append('text').text('Distance').attr('class', 'title').attr('x', 120).attr('y', 100).attr("font-family", "Arial, Helvetica, sans-serif");
-    svgChart.append('text').text(`${total_distance} km`).attr('class', 'count').attr('x', 120).attr('y', 150);
-    svgChart.append('text').text('Time').attr('class', 'title').attr('x', 310).attr('y', 100).attr("font-family", "Arial, Helvetica, sans-serif");;
-    svgChart.append('text').text(`${hours}h ${minutes}m`).attr('class', 'count').attr('x', 310).attr('y', 150);
+    let svgChart = d3n.createSVG(500, 120);
+    svgChart.append('text').text('STRAVA').attr('class', 'main').attr('x', 10).attr('y', 30).attr("font-family", "Tahoma");
+    svgChart.append('text').text('Runs').attr('class', 'title').attr('x', 10).attr('y', 60).attr("font-family", "Arial, Helvetica, sans-serif");
+    svgChart.append('text').text(`${total_runs_count}`).attr('class', 'count').attr('x', 10).attr('y', 110);
+    svgChart.append('text').text('Distance').attr('class', 'title').attr('x', 120).attr('y', 60).attr("font-family", "Arial, Helvetica, sans-serif");
+    svgChart.append('text').text(`${total_distance} km`).attr('class', 'count').attr('x', 120).attr('y', 110);
+    svgChart.append('text').text('Time').attr('class', 'title').attr('x', 310).attr('y', 60).attr("font-family", "Arial, Helvetica, sans-serif");;
+    svgChart.append('text').text(`${hours}h ${minutes}m`).attr('class', 'count').attr('x', 310).attr('y', 110);
 
     return d3n.svgString();
 }
