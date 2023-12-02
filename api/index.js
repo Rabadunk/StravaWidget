@@ -8,11 +8,7 @@ async function buildChart() {
     let svgChart = d3n.createSVG(460, 170);
     svgChart.append('text').text('Cases by DHB').attr('class', 'title').attr('x', 176).attr('y', 20);
 
-
-
     return d3n.svgString();
-
-   
 }
 
 let getActivites = async (res) => {
