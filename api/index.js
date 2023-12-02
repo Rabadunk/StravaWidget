@@ -52,15 +52,6 @@ let getRefreshToken = async () => {
     return response;
 }
 
-let main = async () => {
-    let refreshToken = await getRefreshToken();
-    let activities = await getActivites(refreshToken);
-    let chart = await buildChart(activities);
-    console.log(chart);
-}
-
-main();
-
 module.exports = async (req, res) => {
     res.setHeader('Content-Type', 'image/svg+xml');
     let refreshToken = await getRefreshToken();
