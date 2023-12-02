@@ -13,7 +13,7 @@ let buildChart = async (activities) => {
 
 
     let svgChart = d3n.createSVG(500, 170);
-    svgChart.append('image').attr('href', "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Strava_Logo.svg/2560px-Strava_Logo.svg.png").attr("x", 10).attr("y", "-60").attr("height", 200).attr("width", 200);
+    svgChart.append('image').attr('href', "./logo.png").attr("x", 10).attr("y", "-60").attr("height", 200).attr("width", 200);
     svgChart.append('text').text('Runs').attr('class', 'title').attr('x', 10).attr('y', 100).attr("font-family", "Arial, Helvetica, sans-serif");
     svgChart.append('text').text(`${total_runs_count}`).attr('class', 'count').attr('x', 10).attr('y', 150);
     svgChart.append('text').text('Distance').attr('class', 'title').attr('x', 120).attr('y', 100).attr("font-family", "Arial, Helvetica, sans-serif");
