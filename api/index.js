@@ -4,7 +4,7 @@ require('dotenv').config();
 const auth_link = "https://www.strava.com/oauth/token";
 
 let buildChart = async (activities) => {
-    const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;}.main {font: bold 50px Tahoma; fill: #fc4c02;}"});
+    const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;}.main {font: bold 30px Tahoma; fill: #fc4c02;}"});
 
     let total_runs_count = activities.all_run_totals.count;
     let total_distance =  parseInt(activities.all_run_totals.distance/1000);
@@ -12,14 +12,14 @@ let buildChart = async (activities) => {
     let minutes = parseInt((activities.all_run_totals.moving_time/3600 - hours)*60);
 
 
-    let svgChart = d3n.createSVG(500, 130);
-    svgChart.append('text').text('STRAVA').attr('class', 'main').attr('x', 10).attr('y', 50).attr("font-family", "Tahoma");
-    svgChart.append('text').text('Runs').attr('class', 'title').attr('x', 10).attr('y', 70).attr("font-family", "Arial, Helvetica, sans-serif");
-    svgChart.append('text').text(`${total_runs_count}`).attr('class', 'count').attr('x', 10).attr('y', 120);
-    svgChart.append('text').text('Distance').attr('class', 'title').attr('x', 120).attr('y', 70).attr("font-family", "Arial, Helvetica, sans-serif");
-    svgChart.append('text').text(`${total_distance} km`).attr('class', 'count').attr('x', 120).attr('y', 120);
-    svgChart.append('text').text('Time').attr('class', 'title').attr('x', 310).attr('y', 70).attr("font-family", "Arial, Helvetica, sans-serif");;
-    svgChart.append('text').text(`${hours}h ${minutes}m`).attr('class', 'count').attr('x', 310).attr('y', 120);
+    let svgChart = d3n.createSVG(500, 120);
+    svgChart.append('text').text('STRAVA').attr('class', 'main').attr('x', 10).attr('y', 30).attr("font-family", "Tahoma");
+    svgChart.append('text').text('Runs').attr('class', 'title').attr('x', 10).attr('y', 60).attr("font-family", "Arial, Helvetica, sans-serif");
+    svgChart.append('text').text(`${total_runs_count}`).attr('class', 'count').attr('x', 10).attr('y', 110);
+    svgChart.append('text').text('Distance').attr('class', 'title').attr('x', 120).attr('y', 60).attr("font-family", "Arial, Helvetica, sans-serif");
+    svgChart.append('text').text(`${total_distance} km`).attr('class', 'count').attr('x', 120).attr('y', 110);
+    svgChart.append('text').text('Time').attr('class', 'title').attr('x', 310).attr('y', 60).attr("font-family", "Arial, Helvetica, sans-serif");;
+    svgChart.append('text').text(`${hours}h ${minutes}m`).attr('class', 'count').attr('x', 310).attr('y', 110);
 
     return d3n.svgString();
 }
