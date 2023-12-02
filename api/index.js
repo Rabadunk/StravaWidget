@@ -3,7 +3,7 @@ const D3Node = require('d3-node');
 require('dotenv').config();
 const auth_link = "https://www.strava.com/oauth/token";
 
-async function buildChart(activities) {
+let buildChart = async (activities) => {
     const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;}"});
 
     let total_runs_count = activities.all_run_totals.count;
