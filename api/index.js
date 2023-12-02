@@ -4,7 +4,7 @@ require('dotenv').config();
 const auth_link = "https://www.strava.com/oauth/token";
 
 let buildChart = async (activities) => {
-    const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;}"});
+    const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;}.main {font: bold 50px Tahoma; fill: #fc4c02;}"});
 
     let total_runs_count = activities.all_run_totals.count;
     let total_distance =  parseInt(activities.all_run_totals.distance/1000);
@@ -13,7 +13,7 @@ let buildChart = async (activities) => {
 
 
     let svgChart = d3n.createSVG(500, 170);
-    svgChart.append('svg:image').attr("xlink:href", "logo.png").attr("x", 10).attr("y", "-60").attr("height", 200).attr("width", 200);
+    svgChart.append('text').text('STRAVA').attr('class', 'main').attr('x', 10).attr('y', 60).attr("font-family", "Tahoma");
     svgChart.append('text').text('Runs').attr('class', 'title').attr('x', 10).attr('y', 100).attr("font-family", "Arial, Helvetica, sans-serif");
     svgChart.append('text').text(`${total_runs_count}`).attr('class', 'count').attr('x', 10).attr('y', 150);
     svgChart.append('text').text('Distance').attr('class', 'title').attr('x', 120).attr('y', 100).attr("font-family", "Arial, Helvetica, sans-serif");
