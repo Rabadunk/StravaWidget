@@ -7,7 +7,7 @@ async function buildChart(activities) {
     const d3n = new D3Node({styles:".count {font: bold 40px sans-serif;}"});
 
     let total_runs_count = activities.all_run_totals.count;
-    let total_distance =  activities.all_run_totals.distance/1000;
+    let total_distance =  parseInt(activities.all_run_totals.distance/1000);
     let hours = parseInt(activities.all_run_totals.moving_time/3600);
     let minutes = parseInt((activities.all_run_totals.moving_time/3600 - hours)*60);
 
@@ -52,11 +52,11 @@ let getRefreshToken = async () => {
     return response;
 }
 
-
 module.exports = async (req, res) => {
     res.setHeader('Content-Type', 'image/svg+xml');
     let refreshToken = await getRefreshToken();
     let activities = await getActivites(refreshToken);
     let chart = await buildChart(activities);
+    console.log(chart);
     res.status(200).send(chart);
 };
